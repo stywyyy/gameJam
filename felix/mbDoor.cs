@@ -7,13 +7,14 @@ public class mbDoor : MonoBehaviour
     Animator m_Animator;
     public GameObject go;
     public GameObject activecam;
-    public List<GameObject> cams;
     public int DoorId;
     bool bolyan;
     public Vector3 Max;
+    public Cams c;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         m_Animator = gameObject.GetComponent<Animator>();
         SwitchRoom.start();
     }
@@ -64,13 +65,18 @@ public class mbDoor : MonoBehaviour
     {
         if (Input.GetKeyUp("space"))
         {
-            if (go.transform.position.z >= Max.z)
+            Debug.Log(c.cams[DoorId]);
+            if (go.transform.position.z <= Max.z)
+            {
+                go.transform.position += new Vector3(0, 0, SwitchRoom.Switcheroo(DoorId));
+                Debug.Log(SwitchRoom.Switcheroo(DoorId));
+            }
+            else if (go.transform.position.z >= Max.z)
             {
                 go.transform.position -= new Vector3(0, 0, SwitchRoom.Switcheroo(DoorId));
+                Debug.Log(-SwitchRoom.Switcheroo(DoorId));
             }
-            else
-                go.transform.position += new Vector3(0, 0, SwitchRoom.Switcheroo(DoorId));
-            cams[DoorId].SetActive(true);
+            c.cams[DoorId].SetActive(true);
             bolyan = true;
         }
     }
@@ -79,7 +85,7 @@ public class mbDoor : MonoBehaviour
         if (bolyan == true)
         {
             activecam.SetActive(false);
-            activecam = cams[DoorId];
+            activecam = c.cams[DoorId];
             bolyan = false;
         }
         if (col.tag == "Player")
