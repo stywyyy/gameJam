@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mbDoor : MonoBehaviour {
+public class mbDoor : MonoBehaviour
+{
     Animator m_Animator;
     public GameObject go;
-    public GameObject cam;
-    public GameObject camOg;
+    public GameObject activecam;
+    public List<GameObject> cams;
+    public int DoorId;
+    bool bolyan;
+    public Vector3 Max;
 
     // Use this for initialization
     void Start () {
         m_Animator = gameObject.GetComponent<Animator>();
+        SwitchRoom.start();
     }
     bool open = false;
     bool enter = false;
@@ -59,13 +64,24 @@ public class mbDoor : MonoBehaviour {
     {
         if (Input.GetKeyUp("space"))
         {
-            go.transform.position += new Vector3(0, 0, 200);
-            cam.SetActive(true);
-            camOg.SetActive(false);
+            if (go.transform.position.z >= Max.z)
+            {
+                go.transform.position -= new Vector3(0, 0, SwitchRoom.Switcheroo(DoorId));
+            }
+            else
+                go.transform.position += new Vector3(0, 0, SwitchRoom.Switcheroo(DoorId));
+            cams[DoorId].SetActive(true);
+            bolyan = true;
         }
     }
     void OnTriggerExit(Collider col)
     {
+        if (bolyan == true)
+        {
+            activecam.SetActive(false);
+            activecam = cams[DoorId];
+            bolyan = false;
+        }
         if (col.tag == "Player")
             if(open == true && enter == true && walk == true)
             {
