@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class mbDoor : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class mbDoor : MonoBehaviour
     bool bolyan;
     public Vector3 Max;
     public Cams c;
+    string PENIS;
+    public MommaScript Mom;
 
     // Use this for initialization
     void Start ()
@@ -23,7 +26,7 @@ public class mbDoor : MonoBehaviour
     bool walk = false;
 	// Update is called once per frame
 	void Update () {
-
+        c.text.text = PENIS;
         if (Input.GetKeyDown(KeyCode.W))
             walk = true;
         if (Input.GetKeyUp(KeyCode.W))
@@ -58,7 +61,8 @@ public class mbDoor : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
-        if(col.tag=="Player")
+        PENIS = "press Space to Enter";
+        if (col.tag=="Player")
             enter = true;
     }
     void OnTriggerStay(Collider col)
@@ -82,6 +86,8 @@ public class mbDoor : MonoBehaviour
     }
     void OnTriggerExit(Collider col)
     {
+
+        PENIS = "";
         if (bolyan == true)
         {
             activecam.SetActive(false);
