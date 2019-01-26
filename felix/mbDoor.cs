@@ -21,7 +21,7 @@ public class mbDoor : MonoBehaviour {
             walk = false;
 
        
-            Debug.Log("open");
+            
             if (open == false && enter == true && walk ==true)
             {
                 open = true;
