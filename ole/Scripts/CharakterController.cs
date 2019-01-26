@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharakterController : MonoBehaviour
 {
     public Animator Anim;
+    [Range(0.5f,1)]public float speed = 0.5f;
     // Use this for initialization
     void Start ()
     {
@@ -18,19 +19,19 @@ public class CharakterController : MonoBehaviour
         {
             if (Anim.GetBool("Left") == true)
             {
-                gameObject.transform.position += new Vector3(-0.1f, 0, 0);
+                gameObject.transform.position += new Vector3(-speed, 0, 0);
             }
             else if(Anim.GetBool("Up") == true)
             {
-                gameObject.transform.position += new Vector3(0, 0, 0.1f);
+                gameObject.transform.position += new Vector3(0, 0, speed);
             }
             else if (Anim.GetBool("Right") == true)
             {
-                gameObject.transform.position += new Vector3(0.1f, 0, 0);
+                gameObject.transform.position += new Vector3(speed, 0, 0);
             }
             else
             {
-                gameObject.transform.position += new Vector3(0, 0, -0.1f);
+                gameObject.transform.position += new Vector3(0, 0, speed);
             }
         }
 		if (Input.GetKeyDown("w")|| Input.GetKeyDown("up"))
