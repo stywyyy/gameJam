@@ -42,6 +42,10 @@ public class MommaScript : MonoBehaviour
         //    Anim.SetBool("RightMom", false);
         //    Anim.SetBool("LeftMom", false);
         //    Anim.SetBool("Walk", true);
+        transform.rotation = Quaternion.identity;
+        //if(gameObject.transform.rotation.eulerAngles.y <= rotteter.y)
+        //{
+        //    Anim.SetBool("RightMom", true);
         //}
         //else
         //{
