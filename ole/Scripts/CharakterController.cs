@@ -31,7 +31,7 @@ public class CharakterController : MonoBehaviour
             }
             else
             {
-                gameObject.transform.position += new Vector3(0, 0, speed);
+                gameObject.transform.position += new Vector3(0, 0, -speed);
             }
         }
 		if (Input.GetKeyDown("w")|| Input.GetKeyDown("up"))

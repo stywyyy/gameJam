@@ -5,7 +5,6 @@ using UnityEngine;
 public class SwitchRoom
 {
     static int[] Doors;
-    static int[] Cams;
     // Use this for initialization
     public static void start ()
     {
@@ -22,9 +21,13 @@ public class SwitchRoom
     {
         return Doors[i];
     }
+    public static int MumKnows(int i)
+    {
+        return i * 100;
+    }
 	// Update is called once per frame
 	public static int PenisInCamera(int j)
     {
-        return Cams[j];
+        return j;
     }
 }
