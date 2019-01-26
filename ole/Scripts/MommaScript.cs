@@ -13,20 +13,21 @@ public class MommaScript : MonoBehaviour
 
     void Start()
     {
-        Anim = gameObject.GetComponent<Animator>();
+        Anim = GetComponent<Animator>();
         rotteter = new Vector3(0, 90, 0);
         agent = GetComponent<NavMeshAgent>();
         agent.destination = goal.position;
     }
     void Update()
     {
-        if(gameObject.transform.rotation.eulerAngles.y <= rotteter.y)
-        {
-            Anim.SetBool("RightMom", true);
-        }
-        else
-        {
-            Anim.SetBool("RightMom", false);
-        }
+        transform.rotation = Quaternion.identity;
+        //if(gameObject.transform.rotation.eulerAngles.y <= rotteter.y)
+        //{
+        //    Anim.SetBool("RightMom", true);
+        //}
+        //else
+        //{
+        //    Anim.SetBool("RightMom", false);
+        //}
     }
 }
