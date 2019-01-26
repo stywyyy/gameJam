@@ -9,7 +9,7 @@ public class CharakterController : MonoBehaviour
     void Start ()
     {
         Anim = gameObject.GetComponent<Animator>();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()

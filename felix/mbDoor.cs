@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class mbDoor : MonoBehaviour {
     Animator m_Animator;
+    public GameObject go;
+    public GameObject cam;
+    public GameObject camOg;
 
     // Use this for initialization
     void Start () {
@@ -49,9 +52,17 @@ public class mbDoor : MonoBehaviour {
     }
     void OnTriggerEnter(Collider col)
     {
-        
         if(col.tag=="Player")
             enter = true;
+    }
+    void OnTriggerStay(Collider col)
+    {
+        if (Input.GetKeyUp("space"))
+        {
+            go.transform.position += new Vector3(0, 0, 200);
+            cam.SetActive(true);
+            camOg.SetActive(false);
+        }
     }
     void OnTriggerExit(Collider col)
     {
