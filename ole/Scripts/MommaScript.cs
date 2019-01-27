@@ -11,12 +11,13 @@ public class MommaScript : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.SetDestination(goal.transform.position);
     }
     void Update()
     {
-        agent.SetDestination(goal.transform.position);
+        //agent.SetDestination(goal.transform.position);
         gameObject.transform.rotation = Quaternion.identity;
-
+        Debug.Log(agent.destination);
         //transform.rotation = Quaternion.identity;
         //if (gameObject.transform.rotation.eulerAngles.y <= rotteter.y)
         //{

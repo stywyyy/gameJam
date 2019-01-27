@@ -10,7 +10,7 @@ public class mbDoor : MonoBehaviour
     public GameObject activecam;
     public int DoorId;
     bool bolyan;
-    public Vector3 Max;
+    public int ebene;
     public Cams c;
     string PENIS;
     public MommaScript Mom;
@@ -70,18 +70,21 @@ public class mbDoor : MonoBehaviour
         if (Input.GetKeyUp("space"))
         {
             Debug.Log(c.cams[DoorId]);
-            if (go.transform.position.z <= Max.z)
+            if (DoorId != 0)
             {
                 go.transform.position += new Vector3(0, 0, SwitchRoom.Switcheroo(DoorId));
                 Debug.Log(SwitchRoom.Switcheroo(DoorId));
+                c.cams[DoorId].SetActive(true);
+                //
+                bolyan = true;
             }
-            else if (go.transform.position.z >= Max.z)
+            else if (DoorId == 0)
             {
-                go.transform.position -= new Vector3(0, 0, SwitchRoom.Switcheroo(DoorId));
+                go.transform.position -= new Vector3(0, 0, SwitchRoom.Switcheroo(ebene));
                 Debug.Log(-SwitchRoom.Switcheroo(DoorId));
+                c.cams[0].SetActive(true);
+                bolyan = true;
             }
-            c.cams[DoorId].SetActive(true);
-            bolyan = true;
         }
     }
     void OnTriggerExit(Collider col)
@@ -91,7 +94,6 @@ public class mbDoor : MonoBehaviour
         if (bolyan == true)
         {
             activecam.SetActive(false);
-            activecam = c.cams[DoorId];
             bolyan = false;
         }
         if (col.tag == "Player")
