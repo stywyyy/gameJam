@@ -16,9 +16,10 @@ public class MBMoMDoor : MonoBehaviour
         count += f;
         i = Random.Range(10, 30);
         int rnd = Random.Range(0, 3);
+        Debug.Log(c.Moms.Count);
         if (count > i)
         {
-            Debug.Log(count);
+            Debug.Log(c.Moms.Count);
             for (int i = 0; i < c.Moms.Count; i++)
             {
                 c.Moms[i].SetActive(false);

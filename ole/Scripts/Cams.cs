@@ -7,5 +7,5 @@ public class Cams : MonoBehaviour
 {
     public List<GameObject> cams;
     public Text text;
-    public List<GameObject> Moms;
+    public List<GameObject> Moms = new List<GameObject>();
 }

@@ -47,5 +47,13 @@ public class JoMommaLogci : MonoBehaviour {
             Anim.SetBool("Walk", false);
             Anim.SetBool("Up", true);
         }
+        else
+        {
+            Anim.SetBool("RightMom", false);
+            Anim.SetBool("LeftMom", false);
+            Anim.SetBool("Walk", false);
+            Anim.SetBool("Up", false);
+
+        }
     }
 }
