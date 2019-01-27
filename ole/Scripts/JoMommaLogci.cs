@@ -158,11 +158,22 @@ public class JoMommaLogci : MonoBehaviour
             if(hit.collider.tag=="PLayer")
             { Debug.Log("got yaa"); }
         }
+<<<<<<< HEAD
 
         
 
 
 
+=======
+        else
+        {
+            Anim.SetBool("RightMom", false);
+            Anim.SetBool("LeftMom", false);
+            Anim.SetBool("Walk", false);
+            Anim.SetBool("Up", false);
+
+        }
+>>>>>>> 31f250caa5574bfc596ebe65d757e2c610e2bf46
     }
 
 }
